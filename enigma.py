@@ -30,9 +30,9 @@ def execute():
         image = Image.open("Imagenes/enigma.png")
         resize_image = image.resize((200, 132))
         img = ImageTk.PhotoImage(resize_image)
-        cesar_img = Label(ver, image=img)
-        cesar_img.image = img
-        cesar_img.pack()
+        enig_img = Label(ver, image=img,bg="#F1EEE9")
+        enig_img.image = img
+        enig_img.pack()
     option_menu = Menu(my_menu,background="#F1EEE9",foreground="black",tearoff=0)
     my_menu.add_cascade( label="Opciones", menu= option_menu)
     option_menu.add_command(label="Ver Mas",command=ver_mas)

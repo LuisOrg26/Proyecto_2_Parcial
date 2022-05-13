@@ -33,7 +33,7 @@ def execute():
         image = Image.open("Imagenes/cesar.png")
         resize_image = image.resize((200, 132))
         img = ImageTk.PhotoImage(resize_image)
-        cesar_img = Label(ver,image=img)
+        cesar_img = Label(ver,image=img,bg="#F1EEE9")
         cesar_img.image = img
         cesar_img.pack()
 

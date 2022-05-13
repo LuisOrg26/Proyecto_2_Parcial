@@ -31,9 +31,9 @@ def execute():
         image = Image.open("Imagenes/SEL.png")
         resize_image = image.resize((200, 132))
         img = ImageTk.PhotoImage(resize_image)
-        cesar_img = Label(ver,image=img)
-        cesar_img.image = img
-        cesar_img.pack()
+        sel_img = Label(ver, image=img,bg="#F1EEE9")
+        sel_img.image = img
+        sel_img.pack()
 
         ver.mainloop()
     my_menu = Menu(window)
@@ -202,7 +202,7 @@ def execute():
             lblrr1.configure(text=" = " + str(r1))
             lblrr2.configure(text=" = " + str(r2))
             lblrr3.configure(text=" = " + str(r3))
-            lblvalor = label(window, "x = " + str(round(x[0],2)) + " y = " + str(round(x[1],2)) + " z = " + str(round(x[2],2)), estilo=("Arial", 15))
+            lblvalor = label(window, "x = " + str(round(x[0],2)) + " |  y = " + str(round(x[1],2)) + " |  z = " + str(round(x[2],2)), estilo=("Arial", 15))
             lblvalor.place(x=rx, y=btn + (30 * multi))
 
 
@@ -224,7 +224,7 @@ def execute():
             lblry2.configure(text=str(y2) + "y")
             lblrr1.configure(text=" = " + str(r1))
             lblrr2.configure(text=" = " + str(r2))
-            lblvalor = label(window, "x = " + str(round(x[0],2)) + " y = " + str(round(x[1],2)), estilo=("Arial", 15))
+            lblvalor = label(window, "x = " + str(round(x[0],2)) + " |  y = " + str(round(x[1],2)), estilo=("Arial", 15))
             lblvalor.place(x=rx, y=btn + (30 * multi))
         multi += 1
 
