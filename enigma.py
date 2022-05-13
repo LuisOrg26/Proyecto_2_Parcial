@@ -4,13 +4,13 @@ from PIL import Image, ImageTk
 def execute():
     window = Tk()
     window.title("Cifrado Enigma")
-    window.geometry("300x300")
+    window.geometry("300x200")
     window.configure(bg="#F1EEE9")
     my_menu = Menu(window)
 
 
     def entry(window,variable=StringVar()):
-        return Entry(window, borderwidth=2, background="#73777B", textvariable=variable,fg="white")
+        return Entry(window, borderwidth=2, background="#73777B", textvariable=variable,fg="white",justify="center")
     def label(window, texto, estilo=("Calibri", 8)):
         return Label(window, text=texto, background="#F1EEE9", fg="black", font=estilo)
     def btn(window,texto,comando):
@@ -47,7 +47,10 @@ def execute():
     palabra = StringVar()
     txtpalabra = entry(window,variable=palabra)
     txtpalabra.pack()
+    global code
+    code = False
     def codificar(signo = ""):
+        global code
         word = txtpalabra.get()
         numero = "13"
         salto = int(signo+numero)
@@ -60,11 +63,15 @@ def execute():
                 new_word += chr((((ord(t)+salto)-97)%26)+97).upper()
             else:
                 new_word += chr((((ord(i) + salto) - 97) % 26) + 97)
+        if code==False:
+            code = True
+            btncodificar.configure(text="Decodificar")
+        else:
+            code = False
+            btncodificar.configure(text="Codificar")
         palabra.set(new_word)
     btncodificar = btn(window,"Codificar", lambda: codificar())
     btncodificar.pack(pady=30)
-    btndecodificar = btn(window,"Decodificar", lambda: codificar(signo="-"))
-    btndecodificar.pack()
     window.mainloop()
 
 

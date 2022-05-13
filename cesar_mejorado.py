@@ -3,7 +3,6 @@ import numpy as np
 from PIL import Image, ImageTk
 
 def execute():
-    print(__name__)
     window = Tk()
     window.title("Cesar Mejorado")
     window.configure(bg="#F1EEE9")
@@ -13,7 +12,7 @@ def execute():
     def label(window,texto,estilo = ("Arial",12)):
         return Label(window, text=texto,bg="#F1EEE9",font=estilo,fg="black")
     def entry(window,var,status="normal"):
-        return Entry(window,bg="#73777B",textvariable=var,state=status,fg="white")
+        return Entry(window,bg="#73777B",textvariable=var,state=status,fg="white",justify="center")
     def btn(window,texto,comando):
         return Button(window,text=texto,command=comando,bg="#EC994B",fg="black")
 

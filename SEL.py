@@ -10,7 +10,7 @@ def execute():
     # %%Constantes
     def entry(window):
         variable = StringVar()
-        return Entry(window, width=8, borderwidth=2, background="#73777B", textvariable=variable,fg="white")
+        return Entry(window, width=8, borderwidth=2, background="#73777B", textvariable=variable,fg="white",justify="center")
 
     def label(window, texto, estilo=("Calibri", 8)):
         return Label(window, text=texto, background="#F1EEE9", fg="black", font=estilo)
@@ -63,6 +63,7 @@ def execute():
     btn = 180
     global multi
     multi = 0
+    global numero
     numero = False
 
     # %% Widgets
@@ -195,7 +196,7 @@ def execute():
             lblrx3.configure(text=str(x3) + "x")
             lblry1.configure(text=str(y1) + "y")
             lblry2.configure(text=str(y2) + "y")
-            lblry3.configure(text=str(y2) + "y")
+            lblry3.configure(text=str(y3) + "y")
             lblrz1.configure(text=str(z1) + "z")
             lblrz2.configure(text=str(z2) + "z")
             lblrz3.configure(text=str(z3) + "z")
