@@ -10,7 +10,7 @@ def execute():
     # %%Constantes
     def entry(window):
         variable = StringVar()
-        return Entry(window, width=8, borderwidth=2, background="#73777B", textvariable=variable)
+        return Entry(window, width=8, borderwidth=2, background="#73777B", textvariable=variable,fg="white")
 
     def label(window, texto, estilo=("Calibri", 8)):
         return Label(window, text=texto, background="#F1EEE9", fg="black", font=estilo)
@@ -41,7 +41,7 @@ def execute():
     my_menu.add_cascade(label="Opciones", menu=option_menu)
     option_menu.add_command(label="Ver Mas", command=ver_mas)
     option_menu.add_separator()
-    option_menu.add_command(label="Salir", command=window.quit)
+    option_menu.add_command(label="Salir", command=lambda: window.destroy())
     window.config(menu=my_menu)
 
 
@@ -61,8 +61,9 @@ def execute():
     txt2 = 110
     xyy = 150
     btn = 180
+    global multi
     multi = 0
-    numero = 2
+    numero = False
 
     # %% Widgets
     # lbltitulo = tk.Label(window,text="Ecuaciones Lineales",font=("Arial",20),background="black",fg="white")
@@ -149,7 +150,7 @@ def execute():
         lblrr2.place(x=rr, y=txt2)
         lblrr3.place(x=rr, y=xyy)
         global numero
-        numero = 3
+        numero = True
 
 
     def DosD():
@@ -165,12 +166,13 @@ def execute():
         lblrr2.place(x=rz, y=txt2)
         lblrr3.place(x=rz, y=xyy)
         global numero
-        numero = 2
+        numero = False
 
 
     def calcular():
+        global numero
         global multi
-        if numero == 3:
+        if numero == True:
             x1 = int(txtx.get())
             x2 = int(txt2x.get())
             x3 = int(txt3x.get())
@@ -200,11 +202,11 @@ def execute():
             lblrr1.configure(text=" = " + str(r1))
             lblrr2.configure(text=" = " + str(r2))
             lblrr3.configure(text=" = " + str(r3))
-            lblvalor = label(window, "x = " + str(x[0]) + " y = " + str(x[1]) + " z = " + str(x[2]), estilo=("Arial", 15))
+            lblvalor = label(window, "x = " + str(round(x[0],2)) + " y = " + str(round(x[1],2)) + " z = " + str(round(x[2],2)), estilo=("Arial", 15))
             lblvalor.place(x=rx, y=btn + (30 * multi))
 
 
-        elif numero == 2:
+        elif numero == False:
             x1 = int(txtx.get())
             x2 = int(txt2x.get())
             y1 = int(txty.get())
@@ -222,7 +224,7 @@ def execute():
             lblry2.configure(text=str(y2) + "y")
             lblrr1.configure(text=" = " + str(r1))
             lblrr2.configure(text=" = " + str(r2))
-            lblvalor = label(window, "x = " + str(x[0]) + " y = " + str(x[1]), estilo=("Arial", 15))
+            lblvalor = label(window, "x = " + str(round(x[0],2)) + " y = " + str(round(x[1],2)), estilo=("Arial", 15))
             lblvalor.place(x=rx, y=btn + (30 * multi))
         multi += 1
 

@@ -13,7 +13,7 @@ def execute():
     def label(window,texto,estilo = ("Arial",12)):
         return Label(window, text=texto,bg="#F1EEE9",font=estilo,fg="black")
     def entry(window,var,status="normal"):
-        return Entry(window,bg="#73777B",textvariable=var,state=status)
+        return Entry(window,bg="#73777B",textvariable=var,state=status,fg="white")
     def btn(window,texto,comando):
         return Button(window,text=texto,command=comando,bg="#EC994B",fg="black")
 
@@ -43,7 +43,7 @@ def execute():
     my_menu.add_cascade( label="Opciones", menu= option_menu)
     option_menu.add_command(label="Ver Mas",command=ver_mas)
     option_menu.add_separator()
-    option_menu.add_command(label="Salir",command=window.quit)
+    option_menu.add_command(label="Salir",command=lambda: window.destroy())
     window.config(menu=my_menu)
 
 
@@ -66,8 +66,11 @@ def execute():
         salto = int(signo+numero)
         new_word = ""
         for i in word:
-            if i.isupper() == True:
-                new_word += chr((((ord(i.lower)+salto)-97)%26)+97).upper()
+            if i == " ":
+                new_word += " "
+            elif i.isupper() == True:
+                t = i.lower()
+                new_word += chr((((ord(t)+salto)-97)%26)+97).upper()
             else:
                 new_word += chr((((ord(i) + salto) - 97) % 26) + 97)
         palabra.set(new_word)
