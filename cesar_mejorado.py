@@ -30,7 +30,7 @@ def execute():
                          " decodificar el mensaje debido a sus técnicas de\n"
                          " seguridad mínimas.")
         exp1.pack()
-        image = Image.open("cesar.png")
+        image = Image.open("Imagenes/cesar.png")
         resize_image = image.resize((200, 132))
         img = ImageTk.PhotoImage(resize_image)
         cesar_img = Label(ver,image=img)
