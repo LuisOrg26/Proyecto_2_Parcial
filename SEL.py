@@ -1,5 +1,6 @@
 import numpy as np
 from tkinter import *
+from tkinter import messagebox
 from PIL import Image, ImageTk
 
 # %%Formacion de la Interfaz
@@ -174,18 +175,22 @@ def execute():
         global numero
         global multi
         if numero == True:
-            x1 = int(txtx.get())
-            x2 = int(txt2x.get())
-            x3 = int(txt3x.get())
-            y1 = int(txty.get())
-            y2 = int(txt2y.get())
-            y3 = int(txt3y.get())
-            z1 = int(txtz.get())
-            z2 = int(txt2z.get())
-            z3 = int(txt3z.get())
-            r1 = int(txtr.get())
-            r2 = int(txt2r.get())
-            r3 = int(txt3r.get())
+            try:
+                x1 = int(txtx.get())
+                x2 = int(txt2x.get())
+                x3 = int(txt3x.get())
+                y1 = int(txty.get())
+                y2 = int(txt2y.get())
+                y3 = int(txt3y.get())
+                z1 = int(txtz.get())
+                z2 = int(txt2z.get())
+                z3 = int(txt3z.get())
+                r1 = int(txtr.get())
+                r2 = int(txt2r.get())
+                r3 = int(txt3r.get())
+            except(ValueError):
+                messagebox.showwarning("Advertencia","Ha ingresado los datos de forma incorrecta, cambielos y vuelva a hacerlo")
+                return
 
             a = np.array([[x1, y1, z1], [x2, y2, z2], [x3, y3, z3]])
             b = np.array([r1, r2, r3])
@@ -208,12 +213,16 @@ def execute():
 
 
         elif numero == False:
-            x1 = int(txtx.get())
-            x2 = int(txt2x.get())
-            y1 = int(txty.get())
-            y2 = int(txt2y.get())
-            r1 = int(txtr.get())
-            r2 = int(txt2r.get())
+            try:
+                x1 = int(txtx.get())
+                x2 = int(txt2x.get())
+                y1 = int(txty.get())
+                y2 = int(txt2y.get())
+                r1 = int(txtr.get())
+                r2 = int(txt2r.get())
+            except(ValueError):
+                messagebox.showwarning("Advertencia","Ha ingresado los datos de forma incorrecta, cambielos y vuelva a hacerlo")
+                return
 
             a = np.array([[x1, y1], [x2, y2]])
             b = np.array([r1, r2])

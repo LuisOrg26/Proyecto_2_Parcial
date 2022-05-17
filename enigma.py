@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 from PIL import Image, ImageTk
 
 def execute():
@@ -52,24 +53,34 @@ def execute():
     def codificar(signo = ""):
         global code
         word = txtpalabra.get()
-        numero = "13"
-        salto = int(signo+numero)
-        new_word = ""
+        continuer = True
         for i in word:
-            if i == " ":
-                new_word += " "
-            elif i.isupper():
-                t = i.lower()
-                new_word += chr((((ord(t)+salto)-97)%26)+97).upper()
+            if i.isalpha() or i.isspace():
+                continue
             else:
-                new_word += chr((((ord(i) + salto) - 97) % 26) + 97)
-        if code==False:
-            code = True
-            btncodificar.configure(text="Decodificar")
+                continuer =  False
+                break
+        if continuer:
+            numero = "13"
+            salto = int(signo+numero)
+            new_word = ""
+            for i in word:
+                if i == " ":
+                    new_word += " "
+                elif i.isupper():
+                    t = i.lower()
+                    new_word += chr((((ord(t)+salto)-97)%26)+97).upper()
+                else:
+                    new_word += chr((((ord(i) + salto) - 97) % 26) + 97)
+            if code==False:
+                code = True
+                btncodificar.configure(text="Decodificar")
+            else:
+                code = False
+                btncodificar.configure(text="Codificar")
+            palabra.set(new_word)
         else:
-            code = False
-            btncodificar.configure(text="Codificar")
-        palabra.set(new_word)
+            messagebox.showwarning("Valor Erroneo","Ingresa solo valores alfabeticos y espacios")
     btncodificar = btn(window,"Codificar", lambda: codificar())
     btncodificar.pack(pady=30)
     window.mainloop()

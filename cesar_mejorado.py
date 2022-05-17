@@ -1,4 +1,5 @@
 from tkinter import*
+from tkinter import messagebox
 import numpy as np
 from PIL import Image, ImageTk
 
@@ -60,19 +61,30 @@ def execute():
 
     def cesar(signo="",numero=None):
         word = palabra.get()
-        if numero == "":
-            numero = "3"
-        salto = int(signo+numero)
-        new_word = ""
+        continuer = True
         for i in word:
-            if i == " ":
-                new_word += " "
-            elif i.isupper() == True:
-                t = i.lower()
-                new_word += chr((((ord(t)+salto)-97)%26)+97).upper()
+            if i.isalpha() or i.isspace():
+                continue
             else:
-                new_word += chr((((ord(i) + salto) - 97) % 26) + 97)
-        palabra.set(new_word)
+                continuer =  False
+                break
+
+        if continuer:
+            if numero == "":
+                numero = "3"
+            salto = int(signo+numero)
+            new_word = ""
+            for i in word:
+                if i == " ":
+                    new_word += " "
+                elif i.isupper() == True:
+                    t = i.lower()
+                    new_word += chr((((ord(t)+salto)-97)%26)+97).upper()
+                else:
+                    new_word += chr((((ord(i) + salto) - 97) % 26) + 97)
+            palabra.set(new_word)
+        else:
+            messagebox.showwarning("Valor Erroneo","Ingresa solo caracteres alfabeticos y espacios")
     def cesar_normal():
         txtcodigo.delete(0,END)
         txtcodigo.configure(state="disable")
