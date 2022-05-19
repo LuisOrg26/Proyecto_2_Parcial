@@ -176,18 +176,18 @@ def execute():
         global multi
         if numero == True:
             try:
-                x1 = int(txtx.get())
-                x2 = int(txt2x.get())
-                x3 = int(txt3x.get())
-                y1 = int(txty.get())
-                y2 = int(txt2y.get())
-                y3 = int(txt3y.get())
-                z1 = int(txtz.get())
-                z2 = int(txt2z.get())
-                z3 = int(txt3z.get())
-                r1 = int(txtr.get())
-                r2 = int(txt2r.get())
-                r3 = int(txt3r.get())
+                x1 = float(txtx.get())
+                x2 = float(txt2x.get())
+                x3 = float(txt3x.get())
+                y1 = float(txty.get())
+                y2 = float(txt2y.get())
+                y3 = float(txt3y.get())
+                z1 = float(txtz.get())
+                z2 = float(txt2z.get())
+                z3 = float(txt3z.get())
+                r1 = float(txtr.get())
+                r2 = float(txt2r.get())
+                r3 = float(txt3r.get())
             except(ValueError):
                 messagebox.showwarning("Advertencia","Ha ingresado los datos de forma incorrecta, cambielos y vuelva a hacerlo")
                 return
@@ -214,12 +214,12 @@ def execute():
 
         elif numero == False:
             try:
-                x1 = int(txtx.get())
-                x2 = int(txt2x.get())
-                y1 = int(txty.get())
-                y2 = int(txt2y.get())
-                r1 = int(txtr.get())
-                r2 = int(txt2r.get())
+                x1 = float(txtx.get())
+                x2 = float(txt2x.get())
+                y1 = float(txty.get())
+                y2 = float(txt2y.get())
+                r1 = float(txtr.get())
+                r2 = float(txt2r.get())
             except(ValueError):
                 messagebox.showwarning("Advertencia","Ha ingresado los datos de forma incorrecta, cambielos y vuelva a hacerlo")
                 return
